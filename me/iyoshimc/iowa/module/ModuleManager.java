@@ -1,6 +1,9 @@
 package me.iyoshimc.iowa.module;
 
 import me.iyoshimc.iowa.module.movement.Fly;
+import me.iyoshimc.iowa.module.movement.Timer;
+import me.iyoshimc.iowa.module.player.NoFall;
+import me.iyoshimc.iowa.module.render.Fullbright;
 
 import java.util.ArrayList;
 
@@ -11,6 +14,9 @@ public class ModuleManager {
     public ModuleManager(){
 
         modules.add(new Fly());
+        modules.add(new NoFall());
+        modules.add(new Timer());
+        modules.add(new Fullbright());
     }
 
 
