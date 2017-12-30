@@ -3,13 +3,12 @@ package me.iyoshimc.iowa;
 import me.iyoshimc.iowa.event.EventManager;
 import me.iyoshimc.iowa.event.EventTarget;
 import me.iyoshimc.iowa.event.events.EventKey;
-import me.iyoshimc.iowa.module.Module;
 import me.iyoshimc.iowa.module.ModuleManager;
 import me.iyoshimc.iowa.ui.Hud;
+import me.iyoshimc.iowa.ui.tab.Tabgui;
 import org.lwjgl.opengl.Display;
 
 import java.awt.*;
-import java.io.File;
 import java.io.InputStream;
 
 public class Iowa {
@@ -31,6 +30,7 @@ public class Iowa {
     public ModuleManager moduleManager;
     public Font regular = null;
     public Hud hud;
+    public Tabgui tabgui;
     public Color clientColor = new Color(22, 255, 231);
     public Color blackColor = new Color(0, 0,0 , 127);
 
@@ -43,6 +43,7 @@ public class Iowa {
         }
         eventManager = new EventManager();
         moduleManager = new ModuleManager();
+        tabgui = new Tabgui();
         hud = new Hud();
         Display.setTitle(name + " " + version);
         System.out.println("Developed by "+developer);
