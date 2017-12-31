@@ -1,5 +1,6 @@
 package me.iyoshimc.iowa.module;
 
+import me.iyoshimc.iowa.module.combat.KillAura;
 import me.iyoshimc.iowa.module.movement.Fly;
 import me.iyoshimc.iowa.module.movement.Timer;
 import me.iyoshimc.iowa.module.player.NoFall;
@@ -17,6 +18,7 @@ public class ModuleManager {
         modules.add(new NoFall());
         modules.add(new Timer());
         modules.add(new Fullbright());
+        modules.add(new KillAura());
     }
 
 
