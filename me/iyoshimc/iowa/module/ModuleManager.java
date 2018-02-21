@@ -3,11 +3,10 @@ package me.iyoshimc.iowa.module;
 import me.iyoshimc.iowa.module.combat.AutoPot;
 import me.iyoshimc.iowa.module.combat.AutoSoup;
 import me.iyoshimc.iowa.module.combat.KillAura;
-import me.iyoshimc.iowa.module.movement.Fly;
-import me.iyoshimc.iowa.module.movement.NoSlowDown;
-import me.iyoshimc.iowa.module.movement.Sprint;
-import me.iyoshimc.iowa.module.movement.Timer;
+import me.iyoshimc.iowa.module.movement.*;
+import me.iyoshimc.iowa.module.player.FastEat;
 import me.iyoshimc.iowa.module.player.NoFall;
+import me.iyoshimc.iowa.module.player.Regen;
 import me.iyoshimc.iowa.module.player.Velocity;
 import me.iyoshimc.iowa.module.render.Fullbright;
 
@@ -29,6 +28,9 @@ public class ModuleManager {
         modules.add(new AutoSoup());
         modules.add(new Velocity());
         modules.add(new AutoPot());
+        modules.add(new Regen());
+        modules.add(new FastEat());
+        modules.add(new LongJump());
     }
 
 
