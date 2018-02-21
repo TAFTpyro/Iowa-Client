@@ -1,5 +1,7 @@
 package net.minecraft.client.entity;
 
+import me.iyoshimc.iowa.Iowa;
+import me.iyoshimc.iowa.event.events.EventMove;
 import me.iyoshimc.iowa.event.events.EventPostMotionUpdates;
 import me.iyoshimc.iowa.event.events.EventPreMotionUpdates;
 import me.iyoshimc.iowa.event.events.EventUpdate;
@@ -135,6 +137,13 @@ public class EntityPlayerSP extends AbstractClientPlayer
         this.statWriter = statFile;
         this.mc = mcIn;
         this.dimension = 0;
+    }
+
+    @Override
+    public void moveEntity(double x, double y, double z){
+        EventMove eventMove = new EventMove(x, y, z);
+        eventMove.call();
+        super.moveEntity(eventMove.getX(), eventMove.getY(), eventMove.getZ());
     }
 
     /**
@@ -787,8 +796,8 @@ public class EntityPlayerSP extends AbstractClientPlayer
 
         if (this.isUsingItem() && !this.isRiding())
         {
-            this.movementInput.moveStrafe *= 0.2F;
-            this.movementInput.moveForward *= 0.2F;
+            this.movementInput.moveStrafe *= Iowa.theClient.moduleManager.getModuleByName("NoSlowDown").isToggled() ? 1.0F : 0.2F;
+            this.movementInput.moveForward *= Iowa.theClient.moduleManager.getModuleByName("NoSlowDown").isToggled() ? 1.0F : 0.2F;
             this.sprintToggleTimer = 0;
         }
 
@@ -907,4 +916,15 @@ public class EntityPlayerSP extends AbstractClientPlayer
             this.sendPlayerAbilities();
         }
     }
+
+    public boolean isMoving(){
+        return mc.thePlayer.moveForward != 0 || mc.thePlayer.moveStrafing != 0;
+    }
+
+    public boolean isInLiquid(){
+        return mc.thePlayer.isInWater() || mc.thePlayer.isInLava();
+    }
+
+
+
 }
